@@ -1,0 +1,18 @@
+{
+  "extra": {},
+  "stock": {
+    "bwg:145": false,
+    "bwg:149": false,
+    "bwg:156": false,
+    "bwg:157": false,
+    "bwg:94": false,
+    "dmit:183": false,
+    "dmit:186": false,
+    "dmit:188": false,
+    "dmit:253": false
+  },
+  "tg": {
+    "BandwagonHostNews": "BandwagonHostNews/372",
+    "dmitnews": "dmitnews/477"
+  }
+}
