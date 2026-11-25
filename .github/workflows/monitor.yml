@@ -2,7 +2,7 @@ name: VPS CN2 GIA Stock Monitor
 
 on:
   schedule:
-    # 每 5 分钟在 GitHub 官方免费云端节点（微软 Azure 临时 IP）运行一次
+    # 每 5 分钟运行一次（注：GitHub Actions 免费队列高峰期可能存在延迟）
     - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run CN2 GIA stock monitor
+      - name: Run US West CN2 GIA stock monitor
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
@@ -38,10 +38,11 @@ jobs:
 
       - name: Persist state.json when stock or channel state changes
         run: |
-          if ! git diff --quiet state.json; then
+          if [ -n "$(git status --porcelain state.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add state.json
             git commit -m "chore: update stock state [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi

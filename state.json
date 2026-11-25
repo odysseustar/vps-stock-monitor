@@ -1,14 +1,17 @@
 {
   "extra": {},
   "stock": {
+    "bwg:132": false,
+    "bwg:143": false,
     "bwg:145": false,
+    "bwg:147": false,
     "bwg:149": false,
     "bwg:156": false,
     "bwg:157": false,
     "bwg:94": false,
+    "dmit:182": false,
     "dmit:183": false,
     "dmit:186": false,
-    "dmit:188": false,
     "dmit:253": false
   },
   "tg": {
